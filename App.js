@@ -34,8 +34,10 @@ export default class App extends Component {
       const values = [...this.state.values]
       try {
         values[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)
+        console.log(this.state.operation)
       } catch (e) {
         values[0] = 'error'
+        console.log(e)
       }
 
       values[1] = 0
@@ -65,9 +67,9 @@ export default class App extends Component {
     //se voce estiver digitando algo diferente de "." isso significa caracteres que devem ser exibido
     if (n !== '.') {
       const newValue = parseFloat(DisplayValue)
-      const value = [...this.state.values]
-      value[this.state.current] = newValue
-      this.setState({ value })
+      const values = [...this.state.values]
+      values[this.state.current] = newValue
+      this.setState({ values })
     }
   }
 
